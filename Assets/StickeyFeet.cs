@@ -19,14 +19,14 @@ public class StickeyFeet : MonoBehaviour
     void Start()
     {
         
-        CheckIfCanMoveFoot();
-        AnimatedFoot();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        CheckIfCanMoveFoot();
+        AnimatedFoot();
     }
     void AnimatedFoot()
     {
