@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StickeyFeet : MonoBehaviour
 {
-    public StickeyFeet[] otherStickeyFeet;
+    public StickeyFeet[] otherFeetToCheckFirst;
     public Transform homeLocation;
     Vector3 plantedPosLast;
     Vector3 plantedPosNext;
@@ -14,6 +14,7 @@ public class StickeyFeet : MonoBehaviour
     [Header("footanimation:")]
     public AnimationCurve footlateralEase;
     public AnimationCurve footVerticalRaise;
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -30,10 +31,9 @@ public class StickeyFeet : MonoBehaviour
     void AnimatedFoot()
     {
 
-        if (footMoveTimer >= timeToMoveFoot)
+        if (!IsAnimating())
         {
-            
-        
+          
     transform.position = plantedPosNext;
             return;
         }
@@ -47,6 +47,12 @@ public class StickeyFeet : MonoBehaviour
     }
     void CheckIfCanMoveFoot()
     {
+        if (IsAnimating()) return;
+
+        foreach(StickeyFeet foot in otherFeetToCheckFirst)
+        {
+            if (foot.IsAnimating()) return;
+        }
         float d2 = (transform.position - homeLocation.position).sqrMagnitude;
         if (d2 > moveDistanceThreshold * moveDistanceThreshold)
         {
@@ -63,5 +69,8 @@ public class StickeyFeet : MonoBehaviour
             plantedPosNext = hit.point;
         }
     }
-    
+    bool IsAnimating()
+    {
+        return (footMoveTimer < timeToMoveFoot);
+    }
 }
