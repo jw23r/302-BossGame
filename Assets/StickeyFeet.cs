@@ -17,7 +17,7 @@ public class StickeyFeet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (StickeyFeet )
+        
         CheckIfCanMoveFoot();
         AnimatedFoot();
     }
@@ -63,8 +63,5 @@ public class StickeyFeet : MonoBehaviour
             plantedPosNext = hit.point;
         }
     }
-    bool IsAnimating()
-    {
-
-    }
+    
 }
