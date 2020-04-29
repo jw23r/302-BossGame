@@ -8,8 +8,6 @@ public class MoveTowards : MonoBehaviour
     public Transform rightArm;
     public Transform leftArm;
     public Transform tail;
-   
-    public float speed = .01f;
     public float sightDis;
     // Start is called before the first frame update
     void Start()
@@ -20,17 +18,14 @@ public class MoveTowards : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveToTaregt(tail.position);
-        MoveToTaregt(leftArm.position);
-        MoveToTaregt(rightArm.position);
-        MoveToTaregt(walkTarget.position);
+     
 
 
 
 
     }
 
-    private void MoveToTaregt(Vector3 target)
+    private void MoveToTaregt(Vector3 target, int speed)
     {
         if (transform.position.magnitude - target.magnitude > sightDis) {
             Vector3 targetDirection = walkTarget.position - transform.position;
