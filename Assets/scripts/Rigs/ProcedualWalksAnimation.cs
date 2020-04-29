@@ -23,22 +23,30 @@ public class ProcedualWalksAnimation : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {if (PlayerMovment.v * PlayerMovment.v > 0 || PlayerMovment.h * PlayerMovment.h > 0)
+    {
+        
+    }
+   
+  public void walking()
+    {
+        if (PlayerMovment.v * PlayerMovment.v > 0 || PlayerMovment.h * PlayerMovment.h > 0)
         {
             float time = (Time.time + sinWaveOffeset * Mathf.PI) * sinWaveSpeed;
             float offsetY = Mathf.Cos(time);
             float offsetZ = Mathf.Sin(time);
-             finalPos = startingPos * scaleX;
+            finalPos = startingPos * scaleX;
             finalPos.y = offsetY * distanceY;
             finalPos.z = offsetZ * distanceZ;
             if (offsetY < 0) offsetY = 0;
             transform.localPosition = finalPos;
         }
-    else
+        else
         {
-            transform.localPosition = startingPos;
+            if (!Input.GetKey(KeyCode.Mouse0))
+            {
+                transform.localPosition = startingPos;
+            }
 
         }
     }
-   
 }
