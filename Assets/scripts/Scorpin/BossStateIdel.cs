@@ -22,7 +22,7 @@ namespace Webb {
          
             if (boss.CanSeeAttackTarget())
             {
-
+                boss.ItWorks();
                 return new BossStateChase();
             }
            

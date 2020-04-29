@@ -11,7 +11,7 @@ namespace Webb
     public class BossController : MonoBehaviour
     {
        public Transform attackTarget;
-
+        public Transform me;
          static public bool canSee;
          public Transform rightArm;
          public Transform leftArm;
@@ -109,36 +109,27 @@ namespace Webb
             }
             return false;
         }
-        public void CanSee(){
-            if (transform.position.magnitude - attackTarget.position.magnitude > sightDis)
-            {
-                canSee = true;
-            }
-            else
-            {
-                canSee = false;
-            }
-            }
-       public void MoveToTaregt(Vector3 target, int speed)
+        
+       public void MoveToTaregt(Transform target, int speed)
         {
-            if (transform.position.magnitude - attackTarget.position.magnitude > sightDis)
-            {
-                Vector3 targetDirection = attackTarget.position - transform.position;
+          
+                Vector3 targetDirection = attackTarget.position - target.position;
 
                 // The step size is equal to speed times frame time.
                 float singleStep = speed * Time.deltaTime;
 
                 // Rotate the forward vector towards the target direction by one step
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+                Vector3 newDirection = Vector3.RotateTowards(target.forward, targetDirection, singleStep, 0.0f);
 
 
 
                 // Calculate a rotation a step closer to the target and applies rotation to this object
                 transform.rotation = Quaternion.LookRotation(newDirection);
-                tail.position = Vector3.MoveTowards(target, attackTarget.position, singleStep);
+                target.position = Vector3.MoveTowards(target.position, attackTarget.position, singleStep);
             }
         }
     }
 
-}
+
+
     

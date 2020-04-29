@@ -1754,11 +1754,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb6778758a2af84ebb169f5528f3db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTarget: {fileID: 0}
+  attackTarget: {fileID: 260156830}
+  me: {fileID: 614526379}
   rightArm: {fileID: 491004730}
   leftArm: {fileID: 572320527}
   tail: {fileID: 1291963146}
-  sightDis: 10
+  sightDis: 30
 --- !u!1 &698995486
 GameObject:
   m_ObjectHideFlags: 0

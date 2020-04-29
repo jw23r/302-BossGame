@@ -19,8 +19,9 @@ namespace Webb
 
             if (boss.CanSeeAttackTarget())
             {
+               // boss.ItWorks();
+                boss.MoveToTaregt(boss.me, 1);
 
-                
             }
 
             return null;
@@ -29,3 +30,4 @@ namespace Webb
 
         }
     }
+}
