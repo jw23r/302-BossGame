@@ -481,6 +481,11 @@ PrefabInstance:
       propertyPath: attackTarget
       value: 
       objectReference: {fileID: 2082377746}
+    - target: {fileID: 6030889038213902802, guid: c8f2d60d61e2cfb448fcf73f7b8b58ed,
+        type: 3}
+      propertyPath: chaseDis
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8f2d60d61e2cfb448fcf73f7b8b58ed, type: 3}
 --- !u!1001 &2025191010

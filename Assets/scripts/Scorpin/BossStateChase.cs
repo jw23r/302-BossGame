@@ -18,10 +18,13 @@ namespace Webb
             chase = Random.Range(1, 10) + Random.Range(1, 10) + Random.Range(1, 10);
             
             BossController.time += Time.deltaTime;
+            Vector3 vectorBetween = boss.VectorToAttackTarget();
 
+      
             if (boss.CanSeeAttackTarget())
             {
                // boss.ItWorks();
+               if (boss.chaseDis * boss.chaseDis < vectorBetween.sqrMagnitude )
                 boss.MoveToTaregt(boss.me,boss.attackTarget, 1);
                 if(BossController.time >= chase) {
                     BossController.time = 0;

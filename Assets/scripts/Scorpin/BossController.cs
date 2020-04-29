@@ -12,6 +12,7 @@ namespace Webb
     {
         public Transform tailRestPos;
         public Transform coilTail;
+        public float chaseDis;
        public Transform attackTarget;
         public Transform me;
       static public float time;
