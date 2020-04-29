@@ -14,6 +14,7 @@ public class ProcedualWalksAnimation : MonoBehaviour
     public float distanceY = 1;
     public float distanceZ = 1;
     Vector3 startingPos;
+    Vector3 finalPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +23,21 @@ public class ProcedualWalksAnimation : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        float time = (Time.time + sinWaveOffeset * Mathf.PI) * sinWaveSpeed;
-        float offsetY = Mathf.Cos(time);
-        float offsetZ = Mathf.Sin(time);
-        Vector3 finalPos = startingPos * scaleX;
-        finalPos.y = offsetY * distanceY;
-        finalPos.z = offsetZ * distanceZ;
-        if (offsetY < 0) offsetY = 0;
-        transform.localPosition = finalPos;
+    {if (PlayerMovment.v * PlayerMovment.v > 0 || PlayerMovment.h * PlayerMovment.h > 0)
+        {
+            float time = (Time.time + sinWaveOffeset * Mathf.PI) * sinWaveSpeed;
+            float offsetY = Mathf.Cos(time);
+            float offsetZ = Mathf.Sin(time);
+             finalPos = startingPos * scaleX;
+            finalPos.y = offsetY * distanceY;
+            finalPos.z = offsetZ * distanceZ;
+            if (offsetY < 0) offsetY = 0;
+            transform.localPosition = finalPos;
+        }
+    else
+        {
+            transform.localPosition = startingPos;
+
+        }
     }
 }
