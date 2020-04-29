@@ -16,14 +16,26 @@ namespace Webb
         public override BossState Update(BossController boss)
         {
 
-            boss.ItWorks();
+            BossController.time += Time.deltaTime;
 
             if (boss.CanSeeAttackTarget())
             {
-                boss.MoveToTaregt(boss.tail,15);  
+                if (BossController.time <= .5f)
+                {
+                    boss.MoveToTaregt(boss.tail, boss.coilTail,25);
+                }
+                else
+                {
 
+                    boss.MoveToTaregt(boss.tail, boss.attackTarget, 25);
+                }
+              
             }
-
+            if (BossController.time > 1)
+            {
+                BossController.time = 0;
+                return new BossReturnBodyPartsToRest();
+            }
             return null;
 
 

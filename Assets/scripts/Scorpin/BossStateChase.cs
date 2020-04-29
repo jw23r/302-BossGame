@@ -14,15 +14,16 @@ namespace Webb
         /// <returns></returns>
         public override BossState Update(BossController boss)
         {
-
+            float chase;
+            chase = Random.Range(1, 10) + Random.Range(1, 10) + Random.Range(1, 10);
             
             BossController.time += Time.deltaTime;
 
             if (boss.CanSeeAttackTarget())
             {
                // boss.ItWorks();
-                boss.MoveToTaregt(boss.me, 1);
-                if(BossController.time >= 2) {
+                boss.MoveToTaregt(boss.me,boss.attackTarget, 1);
+                if(BossController.time >= chase) {
                     BossController.time = 0;
                     return new BossStateAttack();
 

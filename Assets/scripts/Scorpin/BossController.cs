@@ -10,6 +10,8 @@ namespace Webb
     /// </summary>
     public class BossController : MonoBehaviour
     {
+        public Transform tailRestPos;
+        public Transform coilTail;
        public Transform attackTarget;
         public Transform me;
       static public float time;
@@ -111,7 +113,7 @@ namespace Webb
             return false;
         }
         
-       public void MoveToTaregt(Transform target, int speed)
+       public void MoveToTaregt(Transform bodyPart,Transform target, int speed)
         {
           
                 Vector3 targetDirection = attackTarget.position - transform.position;
@@ -126,7 +128,7 @@ namespace Webb
 
                 // Calculate a rotation a step closer to the target and applies rotation to this object
                 transform.rotation = Quaternion.LookRotation(newDirection);
-                target.position = Vector3.MoveTowards(target.position, attackTarget.position, singleStep);
+            bodyPart.position = Vector3.MoveTowards(bodyPart.position, target.position, singleStep);
             }
         }
     }
