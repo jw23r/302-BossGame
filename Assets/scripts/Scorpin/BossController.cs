@@ -89,7 +89,7 @@ namespace Webb
 
                 if (vectorBetween.sqrMagnitude < sightDis * sightDis)
                 {
-                    //  return true;
+                    return true;
                     //player is close enogue to boss to activate it
                     Ray ray = new Ray(transform.position, vectorBetween.normalized);
 

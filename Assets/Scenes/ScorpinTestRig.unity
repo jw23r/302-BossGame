@@ -1755,10 +1755,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTarget: {fileID: 0}
-  rightArm: {fileID: 0}
-  leftArm: {fileID: 0}
-  tail: {fileID: 0}
-  sightDis: 0
+  rightArm: {fileID: 491004730}
+  leftArm: {fileID: 572320527}
+  tail: {fileID: 1291963146}
+  sightDis: 10
 --- !u!1 &698995486
 GameObject:
   m_ObjectHideFlags: 0

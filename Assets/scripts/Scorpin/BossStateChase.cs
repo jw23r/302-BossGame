@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Webb {
-    /// <summary>
-    /// this class makes the game object do nothing except look for the player and swtitches to prusue
-    /// </summary>
-    public class BossStateIdel : BossState
+namespace Webb
+{
+    public class BossStateChase : BossState
     {
         // Start is called before the first frame update
         /// <summary>
@@ -19,21 +16,16 @@ namespace Webb {
         {
 
 
-         
+
             if (boss.CanSeeAttackTarget())
             {
 
-                return new BossStateChase();
+                
             }
-           
+
             return null;
 
 
 
         }
-
-        
-
-       
-    }
     }
