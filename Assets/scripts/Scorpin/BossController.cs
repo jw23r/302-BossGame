@@ -12,6 +12,7 @@ namespace Webb
     {
        public Transform attackTarget;
         public Transform me;
+      static public float time;
          static public bool canSee;
          public Transform rightArm;
          public Transform leftArm;
@@ -113,13 +114,13 @@ namespace Webb
        public void MoveToTaregt(Transform target, int speed)
         {
           
-                Vector3 targetDirection = attackTarget.position - target.position;
+                Vector3 targetDirection = attackTarget.position - transform.position;
 
                 // The step size is equal to speed times frame time.
                 float singleStep = speed * Time.deltaTime;
 
                 // Rotate the forward vector towards the target direction by one step
-                Vector3 newDirection = Vector3.RotateTowards(target.forward, targetDirection, singleStep, 0.0f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
 
 
 
