@@ -67,6 +67,48 @@ namespace Webb
             print(transform.position.magnitude - attackTarget.position.magnitude);
             print("it works mother fucker");
         }
+        public Vector3 VectorToAttackTarget()
+        {
+            return attackTarget.position - transform.position;
+        }
+        public float distanceToAttackTarget()
+        {
+            return VectorToAttackTarget().magnitude;
+        }
+
+        /// <summary>
+        /// checks for wether or not the player is visble to the boss
+        /// </summary>
+        /// <returns></returns>
+        public bool CanSeeAttackTarget()
+        {
+            if (attackTarget == null) return false;
+
+            {
+                Vector3 vectorBetween = VectorToAttackTarget();
+
+                if (vectorBetween.sqrMagnitude < sightDis * sightDis)
+                {
+                    //  return true;
+                    //player is close enogue to boss to activate it
+                    Ray ray = new Ray(transform.position, vectorBetween.normalized);
+
+                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    {
+                        Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
+                        Debug.DrawRay(transform.position, forward, Color.green);
+                        if (hit.transform == attackTarget) return true;
+                        //clear line of vision
+
+
+                        // if distances < thershold && raycast from player to boss hits..
+                        // transtion to prsue
+
+                    }
+                }
+            }
+            return false;
+        }
         public void CanSee(){
             if (transform.position.magnitude - attackTarget.position.magnitude > sightDis)
             {

@@ -19,15 +19,11 @@ namespace Webb {
         {
 
 
-            // Debug.Log("idle");
-            //transstions
-            boss.CanSee();
-            // boss.ItWorks();
-            boss.ItWorks();
-            if (BossController.canSee)
+         
+            if (boss.CanSeeAttackTarget())
             {
                 BossController.canSee = false;
-
+                boss.ItWorks();
 
             }
            
