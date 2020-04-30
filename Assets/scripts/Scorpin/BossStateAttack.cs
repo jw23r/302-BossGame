@@ -33,7 +33,7 @@ namespace Webb
                     boss.wasteFront.transform.Rotate(-Vector3.right * boss.speed * Time.deltaTime);
                     boss.wasteBack.transform.Rotate(-Vector3.right * boss.speed * Time.deltaTime);
 
-                    boss.MoveToTaregt(boss.tail, boss.attackTarget, 25);
+                    boss.MoveToTaregt(boss.tail, BossController.attackTarget, 25);
                 }
               
             }

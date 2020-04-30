@@ -18,7 +18,7 @@ namespace Webb {
         public override BossState Update(BossController boss)
         {
 
-
+            boss.CanSeeAttackTarget();
          
             if (boss.CanSeeAttackTarget())
             {

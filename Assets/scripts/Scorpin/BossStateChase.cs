@@ -25,7 +25,7 @@ namespace Webb
             {
                // boss.ItWorks();
                if (boss.chaseDis * boss.chaseDis < vectorBetween.sqrMagnitude )
-                boss.MoveToTaregt(boss.me,boss.attackTarget, 1);
+                boss.MoveToTaregt(boss.me,BossController.attackTarget, 1);
                 if(BossController.time >= chase) {
                     BossController.time = 0;
                     return new BossStateAttack();

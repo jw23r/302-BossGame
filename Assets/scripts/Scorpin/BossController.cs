@@ -14,7 +14,7 @@ namespace Webb
         public Transform tailRestPos;
         public Transform coilTail;
         public float chaseDis;
-       public Transform attackTarget;
+    static public Transform attackTarget;
         public Transform me;
       static public float time;
          static public bool canSee;
@@ -100,17 +100,19 @@ namespace Webb
 
             {
                 Vector3 vectorBetween = VectorToAttackTarget();
+             
 
                 if (vectorBetween.sqrMagnitude < sightDis * sightDis)
                 {
+                    Vector3 offset = new Vector3(0, 1, 0);
                   //  return true;
                     //player is close enogue to boss to activate it
                     Vector3 dir = (attackTarget.position - transform.position).normalized;
-                    Ray ray = new Ray(transform.position, dir);
-                    Debug.DrawRay(transform.position, dir * sightDis, Color.green);
-                    if (Physics.Raycast(ray, out RaycastHit hit,sightDis))
+                    Ray ray = new Ray(transform.position + offset, dir);
+                    Debug.DrawRay(transform.position + offset, dir * sightDis, Color.green);
+                    if (Physics.Raycast(ray, out RaycastHit hit,sightDis * sightDis))
                     {
-                        print(attackTarget);
+                        print(hit);
                      
                         if (hit.transform == attackTarget) return true;
                         //clear line of vision
@@ -152,9 +154,36 @@ namespace Webb
             // Rotate the forward vector towards the target direction by one step
             Vector3 newDirection = Vector3.RotateTowards(bodyPart.forward, targetDirection, singleStep, 0.0f);
         }
+        void OnTriggerEnter(Collider collider)
+        {
+            if (collider.transform.tag == "Player")
+            {
+                attackTarget = collider.transform;
+               // print("u enter");
+               // print(attackTarget);
+            }
+          
+        }
+        /// <summary>
+        /// if enenmy has enemycontroller1 when it exits trigger it get removeds from array
+        /// </summary>
+        /// <param name="collider"></param>
+        void OnTriggerExit(Collider collider)
+        {
+
+            if (collider.transform.tag == "Player")
+            {
+                //print("u leave");
+               attackTarget = null;
+               // print(attackTarget);
+            }
+            
+        }
     }
+}
     
-    }
+    
+
 
 
 
