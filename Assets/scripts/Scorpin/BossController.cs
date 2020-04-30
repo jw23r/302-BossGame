@@ -93,14 +93,15 @@ namespace Webb
 
                 if (vectorBetween.sqrMagnitude < sightDis * sightDis)
                 {
-                    return true;
-                    //player is close enogue to boss to activate it
-                    Ray ray = new Ray(transform.position, vectorBetween.normalized);
 
-                    if (Physics.Raycast(ray, out RaycastHit hit))
+                    //player is close enogue to boss to activate it
+                    Vector3 dir = (attackTarget.position - transform.position).normalized;
+                    Ray ray = new Ray(transform.position, dir);
+
+                    if (Physics.Raycast(ray, out RaycastHit hit,sightDis))
                     {
-                        Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
-                        Debug.DrawRay(transform.position, forward, Color.green);
+                       
+                        Debug.DrawRay(transform.position, dir, Color.green);
                         if (hit.transform == attackTarget) return true;
                         //clear line of vision
 
