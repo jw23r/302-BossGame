@@ -10,6 +10,7 @@ namespace Webb
     /// </summary>
     public class BossController : MonoBehaviour
     {
+        public float speed;
         public Transform tailRestPos;
         public Transform coilTail;
         public float chaseDis;
@@ -21,6 +22,15 @@ namespace Webb
          public Transform leftArm;
          public Transform tail;
          public float sightDis;
+        public Transform wasteFront;
+        public Transform wasteBack;
+        public Transform wasteBackOGRoatation;
+        public Transform wasteFrontOGRoatation;
+        public Transform wasteBackRoataiontarget;
+        public Transform wasteFrontRoataiontarget;
+
+
+
         [HideInInspector]// hides properties from inspector while leaving them accesible to other scripts
 
         BossState currentState;// keps track of what script boss is runing
@@ -93,15 +103,15 @@ namespace Webb
 
                 if (vectorBetween.sqrMagnitude < sightDis * sightDis)
                 {
-
+                  //  return true;
                     //player is close enogue to boss to activate it
                     Vector3 dir = (attackTarget.position - transform.position).normalized;
                     Ray ray = new Ray(transform.position, dir);
-
+                    Debug.DrawRay(transform.position, dir * sightDis, Color.green);
                     if (Physics.Raycast(ray, out RaycastHit hit,sightDis))
                     {
-                       
-                        Debug.DrawRay(transform.position, dir, Color.green);
+                        print(attackTarget);
+                     
                         if (hit.transform == attackTarget) return true;
                         //clear line of vision
 
@@ -132,7 +142,18 @@ namespace Webb
                 transform.rotation = Quaternion.LookRotation(newDirection);
             bodyPart.position = Vector3.MoveTowards(bodyPart.position, target.position, singleStep);
             }
+        public void RotateTowards(Transform bodyPart,Transform target,int speed)
+        {
+            Vector3 targetDirection = target.position - bodyPart.position;
+
+            // The step size is equal to speed times frame time.
+            float singleStep = speed * Time.deltaTime;
+
+            // Rotate the forward vector towards the target direction by one step
+            Vector3 newDirection = Vector3.RotateTowards(bodyPart.forward, targetDirection, singleStep, 0.0f);
         }
+    }
+    
     }
 
 

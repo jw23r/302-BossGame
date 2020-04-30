@@ -17,21 +17,27 @@ namespace Webb
         {
 
             BossController.time += Time.deltaTime;
-
+          
             if (boss.CanSeeAttackTarget())
             {
                 if (BossController.time <= .5f)
                 {
+                    boss.wasteFront.transform.Rotate(Vector3.right* boss.speed * Time.deltaTime);
+                    boss.wasteBack.transform.Rotate(Vector3.right * boss.speed * Time.deltaTime);
+
+
                     boss.MoveToTaregt(boss.tail, boss.coilTail,25);
                 }
                 else
                 {
+                    boss.wasteFront.transform.Rotate(-Vector3.right * boss.speed * Time.deltaTime);
+                    boss.wasteBack.transform.Rotate(-Vector3.right * boss.speed * Time.deltaTime);
 
                     boss.MoveToTaregt(boss.tail, boss.attackTarget, 25);
                 }
               
             }
-            if (BossController.time > 1.5f)
+            if (BossController.time > 1f)
             {
                 BossController.time = 0;
                 return new BossReturnBodyPartsToRest();
