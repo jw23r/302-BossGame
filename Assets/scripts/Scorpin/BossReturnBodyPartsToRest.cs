@@ -15,8 +15,11 @@ public class BossReturnBodyPartsToRest : BossState
     {
 
         BossController.time += Time.deltaTime;
-
-       
+            if (BossController.time < .3f)
+            {
+                boss.wasteFront.transform.Rotate(Vector3.right * boss.speed * Time.deltaTime);
+                boss.wasteBack.transform.Rotate(Vector3.right * boss.speed * Time.deltaTime);
+            }
             if (BossController.time <= .5f)
             {
                 boss.MoveToTaregt(boss.tail, boss.tailRestPos, 25);

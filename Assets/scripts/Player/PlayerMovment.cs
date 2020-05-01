@@ -10,13 +10,25 @@ public class PlayerMovment : MonoBehaviour
 
 
 
-    public float scaleX = 1;
-    public float distanceY = 1;
-    public float distanceZ = 1;
+   
     Vector3 startingPosLeftLeg;
     Vector3 startingPosLeftFist;
     Vector3 startingPosRightFist;
     Vector3 startingPosRightLeg;
+    public float walkingArmSpeed; 
+    public float walkingLegSpeed;
+    public float runingLegSpeed;
+    public float runingArmSpeed;
+    public float armScaleX;
+    public float armDistanceY;
+    public float armDistanceZ;
+
+
+    public float legScaleX;
+    public float legDistanceY;
+    public float legDistanceZ;
+
+
 
 
 
@@ -48,10 +60,10 @@ public class PlayerMovment : MonoBehaviour
     void Update()
     {
         Move();
-        walking(LeftLeg,0, startingPosLeftLeg);
-        walking(leftFist, 0, startingPosLeftFist);
-        walking(rightleg, 1, startingPosRightLeg);
-        walking(rightFist, 1, startingPosRightFist);
+        walking(LeftLeg,0, startingPosLeftLeg,legScaleX,legDistanceY,legDistanceZ);
+        walking(leftFist, 0, startingPosLeftFist,armScaleX,armDistanceY,armDistanceZ);
+        walking(rightleg, 1, startingPosRightLeg, legScaleX, legDistanceY, legDistanceZ);
+        walking(rightFist, 1, startingPosRightFist, armScaleX, armDistanceY, armDistanceZ);
 
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -87,8 +99,10 @@ public class PlayerMovment : MonoBehaviour
 
         fist.position = Vector3.MoveTowards(fist.position, fistTarget.position, singleStep);
     }
-    public void walking(Transform bodyPart, float sinWaveOffeset, Vector3 startingPos)
-    {
+    public void walking(Transform bodyPart, float sinWaveOffeset, Vector3 startingPos ,float scaleX ,float distanceY, float distanceZ )
+    {                                                                               
+
+
         if (PlayerMovment.v * PlayerMovment.v > 0 || PlayerMovment.h * PlayerMovment.h > 0)
         {
             Vector3 finalPos;

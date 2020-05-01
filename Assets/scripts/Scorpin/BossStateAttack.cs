@@ -37,7 +37,7 @@ namespace Webb
                 }
               
             }
-            if (BossController.time > 1f)
+            if (BossController.time > 1.3f)
             {
                 BossController.time = 0;
                 return new BossReturnBodyPartsToRest();
