@@ -29,7 +29,7 @@ public class PlayerMovment : MonoBehaviour
     public float legDistanceZ;
 
 
-
+    Vector3 input;
 
 
     public float moveSpeed = 5;
@@ -42,10 +42,13 @@ public class PlayerMovment : MonoBehaviour
     public Transform fistTarget;
     public Transform rightleg;
     public Transform LeftLeg;
-
-
     bool left;
     bool right = true;
+    public float speed = 6.0f;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
+    public Vector3 walkDir { get; private set;}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,21 +79,48 @@ public class PlayerMovment : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     private void Move()
     {
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-        
-        if (v != 0 && theCam != null)
+        print(body.isGrounded);
+
+        if (body.isGrounded)
         {
-            Quaternion targetRot = Quaternion.Euler(0, theCam.yaw, 0);
-            transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .01f);
-        }
-        Vector3 moveDis = transform.forward * v * moveSpeed;
-        moveDis += transform.right * h * moveSpeed;
-        body.SimpleMove(moveDis);
+
+            h = Input.GetAxis("Horizontal");
+            v = Input.GetAxis("Vertical");
+           input = new Vector3(h, 0.0f, v);
+
+            walkDir = input * moveSpeed;
+            input *= moveSpeed;
+            if (v != 0 && theCam != null)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, theCam.yaw, 0);
+                transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .01f);
+            }
+
+            if (Input.GetButton("Jump"))
+            {
+                print("i jumped b");
+                input.y = jumpSpeed;
+            }
+        
+
+        // if (input.sqrMagnitude > 1) input.Normalize();
+       // walkDir = input * moveSpeed;
     }
+        input.y -= gravity * Time.deltaTime;
+        walkDir = input * moveSpeed;
+        body.Move(walkDir  * Time.deltaTime);
+        
+    }
+    /// <summary>
+    /// this makes are arms movetowards a set taget
+    /// </summary>
+    /// <param name="fist">what fist we want to move</param>
+    /// <param name="speed">how fast the fist moves</param>
     private void MoveToTaregt(Transform fist, int speed)
     {
 

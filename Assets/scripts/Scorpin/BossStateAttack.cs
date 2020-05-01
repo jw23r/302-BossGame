@@ -18,8 +18,7 @@ namespace Webb
 
             BossController.time += Time.deltaTime;
           
-            if (boss.CanSeeAttackTarget())
-            {
+           
                 if (BossController.time <= .5f)
                 {
                     boss.wasteFront.transform.Rotate(Vector3.right* boss.speed * Time.deltaTime);
@@ -36,7 +35,7 @@ namespace Webb
                     boss.MoveToTaregt(boss.tail, BossController.attackTarget, 25);
                 }
               
-            }
+            
             if (BossController.time > 1.3f)
             {
                 BossController.time = 0;
