@@ -112,7 +112,7 @@ namespace Webb
                     Debug.DrawRay(transform.position + offset, dir * sightDis, Color.green);
                     if (Physics.Raycast(ray, out RaycastHit hit,sightDis * sightDis))
                     {
-                        print(hit);
+                      //  print(hit);
                      
                         if (hit.transform == attackTarget) return true;
                         //clear line of vision

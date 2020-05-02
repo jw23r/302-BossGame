@@ -122,7 +122,7 @@ Punch();
     /// </summary>
     private void Move()
     {
-        print(body.isGrounded);
+       // print(body.isGrounded);
 
         if (body.isGrounded)
         {
@@ -149,7 +149,7 @@ Punch();
 
                 
             
-                    print("i jumped b");
+                  //  print("i jumped b");
                     input.y = jumpSpeed;
                     Waste.localPosition += new Vector3(0, 3, 0);
                 

@@ -456,6 +456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sinWaveSpeed: 7
+  restingRightArm: {fileID: 0}
+  restingLeftArm: {fileID: 0}
   walkingArmSpeed: 0
   walkingLegSpeed: 0
   runingLegSpeed: 0
@@ -463,6 +465,7 @@ MonoBehaviour:
   armScaleX: 0.5
   armDistanceY: 1
   armDistanceZ: 1
+  Waste: {fileID: 0}
   legScaleX: 1
   legDistanceY: 0.25
   legDistanceZ: 0.25
@@ -470,12 +473,15 @@ MonoBehaviour:
   theCam: {fileID: 0}
   leftFist: {fileID: 5998405911441285124}
   rightFist: {fileID: 5998405912318567885}
-  fistTarget: {fileID: 5998405911728103522}
+  fistTargetRight: {fileID: 0}
+  fistTargetLeft: {fileID: 0}
   rightleg: {fileID: 5998405911357111443}
   LeftLeg: {fileID: 5998405911405339337}
   speed: 6
   jumpSpeed: 8
   gravity: 20
+  projctileSpawn: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!136 &8907799406655928944
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -485,7 +491,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 2314695673327075631}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
