@@ -8,9 +8,11 @@ public class PlayerMovment : MonoBehaviour
   
     public float sinWaveSpeed = 3;
 
+    public Transform restingRightArm;
+    public Transform restingLeftArm;
 
 
-   
+
     Vector3 startingPosLeftLeg;
     Vector3 startingPosLeftFist;
     Vector3 startingPosRightFist;
@@ -22,7 +24,7 @@ public class PlayerMovment : MonoBehaviour
     public float armScaleX;
     public float armDistanceY;
     public float armDistanceZ;
-
+    public Transform Waste;
 
     public float legScaleX;
     public float legDistanceY;
@@ -31,6 +33,8 @@ public class PlayerMovment : MonoBehaviour
 
     Vector3 input;
 
+    
+    float time;
 
     public float moveSpeed = 5;
     public OrbitCam theCam;
@@ -39,10 +43,12 @@ public class PlayerMovment : MonoBehaviour
     static public float v;
     public Transform leftFist;
     public Transform rightFist;
-    public Transform fistTarget;
+    public Transform fistTargetRight;
+    public Transform fistTargetLeft;
+
     public Transform rightleg;
     public Transform LeftLeg;
-    bool left;
+    bool left = true;
     bool right = true;
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -63,22 +69,47 @@ public class PlayerMovment : MonoBehaviour
     void Update()
     {
         Move();
-        walking(LeftLeg,0, startingPosLeftLeg,legScaleX,legDistanceY,legDistanceZ);
-        walking(leftFist, 0, startingPosLeftFist,armScaleX,armDistanceY,armDistanceZ);
+        walking(LeftLeg, 0, startingPosLeftLeg, legScaleX, legDistanceY, legDistanceZ);
         walking(rightleg, 1, startingPosRightLeg, legScaleX, legDistanceY, legDistanceZ);
+
+        time -= Time.deltaTime;
+
+Punch();
+
+        walking(leftFist, 0, startingPosLeftFist, armScaleX, armDistanceY, armDistanceZ);
         walking(rightFist, 1, startingPosRightFist, armScaleX, armDistanceY, armDistanceZ);
 
-
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            MoveToTaregt(rightFist,5);
-        }
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            MoveToTaregt(leftFist, 5);
-        }
-
     }
+
+    private void Punch()
+    {
+
+        if (right && time > 0)
+        {
+            MoveToTaregt(rightFist, fistTargetRight, 25);
+
+        }
+        else
+        {
+            MoveToTaregt(rightFist, restingRightArm, 25);
+        }
+        if (left && time > 0)
+        {
+            MoveToTaregt(leftFist, fistTargetLeft, 2500);
+
+        }
+        else
+        {
+            MoveToTaregt(leftFist, restingLeftArm, 2500);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            time = .5f;
+
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -100,11 +131,21 @@ public class PlayerMovment : MonoBehaviour
                 Quaternion targetRot = Quaternion.Euler(0, theCam.yaw, 0);
                 transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .01f);
             }
-
             if (Input.GetButton("Jump"))
             {
-                print("i jumped b");
-                input.y = jumpSpeed;
+                Waste.localPosition -= new Vector3(0, 3, 0);
+         //       Waste.localPosition -= new Vector3(0, 3, 0);
+            }
+
+                if (Input.GetButtonUp("Jump"))
+            {
+
+                
+            
+                    print("i jumped b");
+                    input.y = jumpSpeed;
+                    Waste.localPosition += new Vector3(0, 3, 0);
+                
             }
         
 
@@ -121,13 +162,13 @@ public class PlayerMovment : MonoBehaviour
     /// </summary>
     /// <param name="fist">what fist we want to move</param>
     /// <param name="speed">how fast the fist moves</param>
-    private void MoveToTaregt(Transform fist, int speed)
+    private void MoveToTaregt(Transform fist, Transform target,int speed)
     {
 
         float singleStep = speed * Time.deltaTime;
 
 
-        fist.position = Vector3.MoveTowards(fist.position, fistTarget.position, singleStep);
+        fist.position = Vector3.MoveTowards(fist.position, target.position, singleStep);
     }
     public void walking(Transform bodyPart, float sinWaveOffeset, Vector3 startingPos ,float scaleX ,float distanceY, float distanceZ )
     {                                                                               
@@ -145,14 +186,7 @@ public class PlayerMovment : MonoBehaviour
             if (offsetY < 0) offsetY = 0;
             bodyPart.localPosition = finalPos;
         }
-        else
-        {
-            if (!Input.GetKey(KeyCode.Mouse0))
-            {
-                bodyPart.localPosition = startingPos;
-            }
-
-        }
+     
     }
 }
 
