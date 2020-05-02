@@ -53,11 +53,16 @@ public class PlayerMovment : MonoBehaviour
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
+    public Transform projctileSpawn;
+    public GameObject projectile;
+   
+
     public Vector3 walkDir { get; private set;}
 
     // Start is called before the first frame update
     void Start()
     {
+       
         startingPosLeftLeg = LeftLeg.localPosition;
          startingPosLeftFist = leftFist.localPosition;
         startingPosRightFist = rightFist.localPosition;
@@ -75,10 +80,11 @@ public class PlayerMovment : MonoBehaviour
         time -= Time.deltaTime;
 
 Punch();
-
-        walking(leftFist, 0, startingPosLeftFist, armScaleX, armDistanceY, armDistanceZ);
-        walking(rightFist, 1, startingPosRightFist, armScaleX, armDistanceY, armDistanceZ);
-
+        if (time < 0)
+        {
+            walking(rightFist, 1, startingPosRightFist, armScaleX, armDistanceY, armDistanceZ);
+            walking(leftFist, 0, startingPosLeftFist, armScaleX, armDistanceY, armDistanceZ);
+        }
     }
 
     private void Punch()
@@ -86,12 +92,12 @@ Punch();
 
         if (right && time > 0)
         {
-            MoveToTaregt(rightFist, fistTargetRight, 25);
+            MoveToTaregt(rightFist, fistTargetRight, 250);
 
         }
         else
         {
-            MoveToTaregt(rightFist, restingRightArm, 25);
+            MoveToTaregt(rightFist, restingRightArm, 250);
         }
         if (left && time > 0)
         {
@@ -103,8 +109,9 @@ Punch();
             MoveToTaregt(leftFist, restingLeftArm, 2500);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && time <= 0 )
         {
+            Instantiate(projectile, projctileSpawn.position, projctileSpawn.rotation );
             time = .5f;
 
         }
