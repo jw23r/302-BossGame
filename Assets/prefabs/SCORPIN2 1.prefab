@@ -2976,10 +2976,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4621882206321363950}
   m_LocalRotation: {x: 0, y: 0, z: -0.07206542, w: 0.9973999}
-  m_LocalPosition: {x: -0, y: 0.004374023, z: 0}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_LocalPosition: {x: 0, y: 0.004374023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5948517490467230996}
+  - {fileID: 878943138107231572}
   m_Father: {fileID: 6437306212509488944}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4328,6 +4329,52 @@ Transform:
   m_Father: {fileID: 669049627911268814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6639565546164924098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878943138107231572}
+  - component: {fileID: 7759974211670026212}
+  m_Layer: 0
+  m_Name: Damge
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &878943138107231572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639565546164924098}
+  m_LocalRotation: {x: 2.6846456e-10, y: -0.0000000037156034, z: 0.000000007450579,
+    w: 1}
+  m_LocalPosition: {x: -0.00059, y: 0.00431, z: 0.00028}
+  m_LocalScale: {x: 0.010000016, y: 0.010000006, z: 0.010000013}
+  m_Children: []
+  m_Father: {fileID: 7758256909336318931}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &7759974211670026212
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639565546164924098}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6671889541929532261
 GameObject:
   m_ObjectHideFlags: 0
