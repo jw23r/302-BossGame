@@ -22,6 +22,10 @@ public class Destroy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if(other.transform.tag == "Enemy" )
+        {
+            GUIController.enemeyHelath -= 8;
+        }
         print("whats up");
         Destroy(transform.parent.gameObject);
     }
