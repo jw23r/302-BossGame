@@ -5,6 +5,7 @@ using UnityEngine;
 public class Destroy : MonoBehaviour
 {
     public float time = 1;
+    public float damge;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +25,10 @@ public class Destroy : MonoBehaviour
     {
         if(other.transform.tag == "Enemy" )
         {
-            GUIController.enemeyHelath -= 8;
+            GUIController.enemeyHelath -= damge;
+            print("suck it bitch");
         }
-        print("whats up");
+      
         Destroy(transform.parent.gameObject);
     }
 }
