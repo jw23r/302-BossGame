@@ -103,7 +103,7 @@ Punch();
             MoveToTaregt(leftFist, restingLeftArm, 2500);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             time = .5f;
 
