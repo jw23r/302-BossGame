@@ -75,6 +75,7 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            time -= Time.deltaTime;
         if (GUIController.playerHealth <= 0)
         {
             deadTime -= Time.deltaTime;
@@ -108,7 +109,6 @@ public class PlayerMovment : MonoBehaviour
             walking(LeftLeg, 0, startingPosLeftLeg, legScaleX, legDistanceY, legDistanceZ);
             walking(rightleg, 1, startingPosRightLeg, legScaleX, legDistanceY, legDistanceZ);
 
-            time -= Time.deltaTime;
 
             Punch();
             if (time < 0)
@@ -140,11 +140,14 @@ public class PlayerMovment : MonoBehaviour
             MoveToTaregt(leftFist, restingLeftArm, 2500);
         }
 
-        if ( Input.GetButtonDown("Fire1") || Input.GetAxis("Fire1") > 0 && time <= 0 )
+        if ( Input.GetButtonDown("Fire1") || Input.GetAxis("Fire1") > 0  )
         {
-            Instantiate(projectile, projctileSpawn.position, projctileSpawn.rotation );
-            time = .5f;
-            ideltime = 3;
+            if (time <= 0)
+            {
+                Instantiate(projectile, projctileSpawn.position, projctileSpawn.rotation);
+                time = 1f;
+            }
+           // ideltime = 3;
 
         }
         if (Input.GetButton("Shift") || Input.GetAxis("Shift") > 0 )
