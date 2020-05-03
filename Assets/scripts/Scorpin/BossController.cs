@@ -29,7 +29,7 @@ namespace Webb
         public Transform wasteBackRoataiontarget;
         public Transform wasteFrontRoataiontarget;
         public Vector3 attackOffset = new Vector3(0,0,0);
-
+       public  bool dead = false;
 
 
         [HideInInspector]// hides properties from inspector while leaving them accesible to other scripts
@@ -62,6 +62,7 @@ namespace Webb
 
 
         }
+
         /// <summary>
         /// used for swithcing states
         /// </summary>
@@ -74,6 +75,13 @@ namespace Webb
 
                 currentState = newState;
                 currentState.OnStart(this);
+            }
+        }
+        public void IsDead()
+        {
+            if( GUIController.enemeyHelath <= 0)
+            {
+                dead = true;
             }
         }
         public void ItWorks()

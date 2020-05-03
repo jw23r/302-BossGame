@@ -15,9 +15,12 @@ namespace Webb
         /// <returns></returns>
         public override BossState Update(BossController boss)
         {
-
+            boss.IsDead();
             BossController.time += Time.deltaTime;
-          
+          if(boss.dead == true)
+            {
+                return new BossStateDead();
+            }
            
                 if (BossController.time <= .5f)
                 {
