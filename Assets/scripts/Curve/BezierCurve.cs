@@ -42,8 +42,9 @@ public class BezierCurve : MonoBehaviour
 }
    public void CacheSplineData()
     {
-        LengthOfSpline();
         CalcWorldPositions();
+        LengthOfSpline();
+       
     }
     public Vector3 FindPositionAt(float p)
       
