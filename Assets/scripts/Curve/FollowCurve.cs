@@ -11,12 +11,6 @@ public class FollowCurve : MonoBehaviour
     public bool shouldAnimate = true;
     float timeCurrent = 0;
     // Start is called before the first frame update
-    void Start()
-    {
-     
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (shouldAnimate)
@@ -26,7 +20,6 @@ public class FollowCurve : MonoBehaviour
             percent = Mathf.Clamp(percent, 0, 1);
         }
         SetPostionToCurve();
-    
     }
     void OnValidate()
         {
@@ -37,7 +30,7 @@ public class FollowCurve : MonoBehaviour
         if (curve)
         {
             float p = speed.Evaluate(percent);
-            SetPostionToCurve();
+            print(p);
             transform.position = curve.FindPositionAt(p);
 
         }

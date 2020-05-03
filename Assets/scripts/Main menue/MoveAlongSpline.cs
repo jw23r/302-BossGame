@@ -9,17 +9,20 @@ public class MoveAlongSpline : MonoBehaviour
     [Range(0, 1)] public float percent = 0;
 
     public AnimationCurve speed;
-    public float animationLength = 5;
+    public float animationLength = 50;
     public bool shouldAnimate = true;
     float timeCurrent = 0;
     void Update()
     {
         if (shouldAnimate)
         {
+           
+
             timeCurrent += Time.deltaTime;
-        }
             percent = timeCurrent / animationLength;
             percent = Mathf.Clamp(percent, 0, 1);
+            print(percent);
+        }
         SetPostionToCurve();
 
     }
@@ -32,7 +35,7 @@ public class MoveAlongSpline : MonoBehaviour
         if (curve)
         {
             float p = speed.Evaluate(percent);
-            SetPostionToCurve();
+           
             transform.position = curve.FindPositionAt(p);
 
         }

@@ -50,7 +50,7 @@ public class BezierCurve : MonoBehaviour
       
     {
 
-     
+        if(worldPoints == null) return Vector3.zero;
         if (worldPoints.Length == 0 ) return Vector3.zero;
         if (worldPoints.Length == 1) return worldPoints[0];
         if (worldPoints.Length == 2) return AnimMath.Lerp(worldPoints[0], worldPoints[1], p);
