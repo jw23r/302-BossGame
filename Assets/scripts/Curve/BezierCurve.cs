@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+[ExecuteInEditMode]
 public class BezierCurve : MonoBehaviour
 {/// <summary>
 /// the res to calulate each indviual curve(not the whole spline
@@ -31,7 +31,7 @@ public class BezierCurve : MonoBehaviour
         }
         points = pts;
     }
-
+   
     void Update()
     {
         CacheSplineData();
