@@ -29,7 +29,7 @@ public class BezierCurveEditor : Editor
 
         for (int i = 0; i < curve.worldPoints.Length; i++)
         {
-            if (Handles.Button(curve.worldPoints[i], Quaternion.identity, .1f, .05f, Handles.CubeHandleCap))
+            if (Handles.Button(curve.worldPoints[i], Quaternion.identity, .5f, .05f, Handles.CubeHandleCap))
             {
                 selectedIndex = i;
             }
