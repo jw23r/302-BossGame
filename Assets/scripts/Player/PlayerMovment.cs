@@ -55,6 +55,8 @@ public class PlayerMovment : MonoBehaviour
     public float gravity = 20.0f;
     public Transform projctileSpawn;
     public GameObject projectile;
+    public float ideltime;
+    public float deadTime;
    
 
     public Vector3 walkDir { get; private set;}
@@ -73,22 +75,49 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
-       
-        Move();
-        walking(LeftLeg, 0, startingPosLeftLeg, legScaleX, legDistanceY, legDistanceZ);
-        walking(rightleg, 1, startingPosRightLeg, legScaleX, legDistanceY, legDistanceZ);
-
-        time -= Time.deltaTime;
-
-Punch();
-        if (time < 0)
+        if (GUIController.playerHealth <= 0)
         {
-            walking(rightFist, 1, startingPosRightFist, armScaleX, armDistanceY, armDistanceZ);
-            walking(leftFist, 0, startingPosLeftFist, armScaleX, armDistanceY, armDistanceZ);
+            deadTime -= Time.deltaTime;
+            if (deadTime > 0)
+            {
+                transform.Rotate(-Vector3.right * 40 * Time.deltaTime);
+            }
+            }
+            if (GUIController.playerHealth >= .1f)
+        {
+            ideltime -= Time.deltaTime;
+            if (ideltime <= 0)
+            {
+                if (ideltime >= -1f)
+                {
+                    Waste.localPosition -= new Vector3(.2f, .2f, .2f);
+                }
+                if (ideltime <= -1.1f)
+                {
+                    Waste.localPosition += new Vector3(.2f, .2f, .2f);
+
+                }
+                if (ideltime < -2.2f)
+                {
+                    ideltime = 0;
+                }
+
+            }
+
+            Move();
+            walking(LeftLeg, 0, startingPosLeftLeg, legScaleX, legDistanceY, legDistanceZ);
+            walking(rightleg, 1, startingPosRightLeg, legScaleX, legDistanceY, legDistanceZ);
+
+            time -= Time.deltaTime;
+
+            Punch();
+            if (time < 0)
+            {
+                walking(rightFist, 1, startingPosRightFist, armScaleX, armDistanceY, armDistanceZ);
+                walking(leftFist, 0, startingPosLeftFist, armScaleX, armDistanceY, armDistanceZ);
+            }
         }
     }
-
     private void Punch()
     {
 
@@ -115,6 +144,7 @@ Punch();
         {
             Instantiate(projectile, projctileSpawn.position, projctileSpawn.rotation );
             time = .5f;
+            ideltime = 3;
 
         }
         if (Input.GetButton("Shift") || Input.GetAxis("Shift") > 0 )
