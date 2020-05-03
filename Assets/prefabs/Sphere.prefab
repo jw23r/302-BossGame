@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0.4
-  damge: 32
+  damge: 64
 --- !u!135 &1847420282896535563
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4905,5 +4905,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7e45bc4154e1240acdf73983507d15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 10
   force: {x: 0, y: 0, z: 20}
