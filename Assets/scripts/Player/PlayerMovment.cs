@@ -73,6 +73,7 @@ public class PlayerMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         Move();
         walking(LeftLeg, 0, startingPosLeftLeg, legScaleX, legDistanceY, legDistanceZ);
         walking(rightleg, 1, startingPosRightLeg, legScaleX, legDistanceY, legDistanceZ);
@@ -109,7 +110,7 @@ Punch();
             MoveToTaregt(leftFist, restingLeftArm, 2500);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && time <= 0 )
+        if ( Input.GetButtonDown("Fire1") && time <= 0 )
         {
             Instantiate(projectile, projctileSpawn.position, projctileSpawn.rotation );
             time = .5f;

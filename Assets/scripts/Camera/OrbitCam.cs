@@ -19,7 +19,7 @@ public class OrbitCam : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X");// how many pixels the mouse has moved left/right
         float mouseY = Input.GetAxis("Mouse Y");// up and down
-
+       
         yaw += mouseX * lookSensitivityX;
         pitch += mouseY * lookSensitivityY;
         pitch = Mathf.Clamp(pitch,0, 89);
