@@ -17,9 +17,24 @@ namespace Webb {
         /// <returns></returns>
         public override BossState Update(BossController boss)
         {
+            Vector3 idel = new Vector3(0, .005f, .005f);
+            BossController.time += Time.deltaTime;
+            if(BossController.time < .5f)
+            {
+                boss.transform.position -= idel;
+            }
+            if (BossController.time > .5f && BossController.time  < 1.0f)
+            { 
+                boss.transform.position += idel;
+            
 
-            boss.CanSeeAttackTarget();
-         
+            }
+            if (BossController.time >= 1f)
+            {
+                BossController.time = 0;
+            }
+            // boss.CanSeeAttackTarget();
+
             if (boss.CanSeeAttackTarget())
             {
               //  boss.ItWorks();

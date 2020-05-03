@@ -28,6 +28,7 @@ namespace Webb
         public Transform wasteFrontOGRoatation;
         public Transform wasteBackRoataiontarget;
         public Transform wasteFrontRoataiontarget;
+        public Vector3 attackOffset = new Vector3(0,0,0);
 
 
 
@@ -136,7 +137,7 @@ namespace Webb
                 float singleStep = speed * Time.deltaTime;
 
                 // Rotate the forward vector towards the target direction by one step
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+                Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection,  singleStep, 0.0f);
 
 
 
@@ -144,6 +145,23 @@ namespace Webb
                 transform.rotation = Quaternion.LookRotation(newDirection);
             bodyPart.position = Vector3.MoveTowards(bodyPart.position, target.position, singleStep);
             }
+        public void AttackTaregt(Transform bodyPart, Transform target, int speed)
+        {
+
+            Vector3 targetDirection = attackTarget.position - transform.position;
+
+            // The step size is equal to speed times frame time.
+            float singleStep = speed * Time.deltaTime;
+
+            // Rotate the forward vector towards the target direction by one step
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection , singleStep, 0.0f);
+
+
+
+            // Calculate a rotation a step closer to the target and applies rotation to this object
+            transform.rotation = Quaternion.LookRotation(newDirection);
+            bodyPart.position = Vector3.MoveTowards(bodyPart.position, target.position + attackOffset, singleStep);
+        }
         public void RotateTowards(Transform bodyPart,Transform target,int speed)
         {
             Vector3 targetDirection = target.position - bodyPart.position;

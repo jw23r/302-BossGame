@@ -15,7 +15,7 @@ namespace Webb
         public override BossState Update(BossController boss)
         {
             float chase;
-            chase = Random.Range(1, 10) + Random.Range(1, 10) + Random.Range(1, 10);
+            chase = Random.Range(1, 5) + Random.Range(1, 5) + Random.Range(1, 5);
             
             BossController.time += Time.deltaTime;
             Vector3 vectorBetween = boss.VectorToAttackTarget();
@@ -25,7 +25,7 @@ namespace Webb
             {
                // boss.ItWorks();
                if (boss.chaseDis * boss.chaseDis < vectorBetween.sqrMagnitude )
-                boss.MoveToTaregt(boss.me,BossController.attackTarget, 1);
+                boss.MoveToTaregt(boss.me,BossController.attackTarget, 4);
                 if(BossController.time >= chase) {
                     BossController.time = 0;
                     return new BossStateAttack();
