@@ -19,7 +19,7 @@ public class DealDamge : MonoBehaviour
     {
         if(other.transform.tag == "Player")
         {
-            GUIController.playerHealth -= 7;
+            GUIController.playerHealth -= 28;
             print("take that damge bitch");
         }
     }
