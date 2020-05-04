@@ -44,24 +44,43 @@ public class FollowCurve : MonoBehaviour
             {
                 if (time < .3f)
                 {
-                    transform.localPosition += new Vector3(0, .005f, .005f);
+                    transform.localPosition += new Vector3(0, .001f, .001f);
                 }
                 if(time > .4f && time < .8f )
                 {
-                    transform.localPosition += new Vector3(0, 0, -.005f);
+                    transform.localPosition += new Vector3(0, 0, -.001f);
 
                 }
                 if (time > .8f && time < 1.2f)
                 {
-                    transform.localPosition += new Vector3(0, -.005f, 0);
+                    transform.localPosition += new Vector3(0, -.001f, 0);
 
                 }
                 if (time > 1.2f && time < 1.5f)
                 {
-                    transform.localPosition += new Vector3(0, 0, .005f);
+                    transform.localPosition += new Vector3(0, 0, .001f);
 
                 }
-                if (time >= 1.6f)
+                if (time > 1.5f && time < 1.9f)
+                {
+                    transform.localPosition += new Vector3(0, -.001f, .001f);
+                }
+                if (time > 1.9f && time < 2.3f)
+                {
+                    transform.localPosition += new Vector3(0, 0, .001f);
+
+                }
+                if (time > 2.3f && time < 2.7f)
+                {
+                    transform.localPosition += new Vector3(0, .001f, 0);
+
+                }
+                if (time > 2.7f && time < 3.0f)
+                {
+                    transform.localPosition += new Vector3(0, 0, -.001f);
+
+                }
+                if (time >= 3f)
                 {
                     time = 0;
                 }
