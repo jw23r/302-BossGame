@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140620916}
   m_LocalRotation: {x: 0.007191922, y: 0.72857416, z: -0.0076500163, w: 0.6848865}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 478.7807, y: 240.97084, z: 188.25488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f48928df2d36c046ae43b378bd3d615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineLength: 0
+  splineLength: 76.675354
   points:
   - {x: 0, y: 0, z: 0}
   - {x: 7.938629, y: 0, z: 0}
@@ -508,12 +508,12 @@ MonoBehaviour:
   - {x: 65.21921, y: 0, z: 0}
   - {x: 76.67532, y: 0, z: 0}
   curveLengths:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 13.666687
+  - 11.456116
+  - 11.456116
+  - 11.456116
+  - 11.456116
+  - 17.184204
 --- !u!4 &1835628283
 Transform:
   m_ObjectHideFlags: 0
