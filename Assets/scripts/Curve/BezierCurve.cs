@@ -60,11 +60,12 @@ public class BezierCurve : MonoBehaviour
         {
             float rightValue = leftValue + curveLengths[i];
             float rightPercent = rightValue / splineLength;
+
             if(rightPercent >= p)
             {
                 float leftPercent = leftValue / splineLength;
                 float curvePercent = (p - leftPercent) / (rightPercent - leftPercent);
-                
+                print(curvePercent);
                 Vector3 a = worldPoints[i];
                 Vector3 b = worldPoints[i + 1];
                 Vector3 c = worldPoints[i + 2];
@@ -131,14 +132,18 @@ public class BezierCurve : MonoBehaviour
     }
     void LengthOfSpline()
     {
-      
-        if(points.Length == 0)
+
+        if (points.Length == 0)
         {
             curveLengths = new float[0];
             splineLength = 0;
             return;
 
-        }else if(points.Length == 2)
+        } else if (points.Length == 1)
+        {
+
+        }
+        else if(points.Length == 2)
         {
             curveLengths = new float[0];
             splineLength = (worldPoints[0] - worldPoints[1]).magnitude;
@@ -177,7 +182,7 @@ public class BezierCurve : MonoBehaviour
         {
             float p = i / (float)RESOLUTION;
             Vector3 pos2 = AnimMath.QuadraticBezier(a, b, c, p);
-            if (i > 0) result += (pos2 - pos2).magnitude;
+            if (i > 0) result += (pos2 - pos1).magnitude;
             pos1 = pos2;
         }
         return result;

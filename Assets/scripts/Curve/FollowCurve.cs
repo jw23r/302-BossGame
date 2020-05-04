@@ -30,7 +30,7 @@ public class FollowCurve : MonoBehaviour
         if (curve)
         {
             float p = speed.Evaluate(percent);
-            print(p);
+           // print(p);
             transform.position = curve.FindPositionAt(p);
 
         }
