@@ -152,7 +152,7 @@ public class PlayerMovment : MonoBehaviour
         }
         if (Input.GetButton("Shift") || Input.GetAxis("Shift") > 0 )
         {
-            moveSpeed = 3f;
+            moveSpeed = 2.2f;
 
         }
         else
@@ -182,7 +182,7 @@ public class PlayerMovment : MonoBehaviour
             if (v != 0 || h !=0 && theCam != null)
             {
                 Quaternion targetRot = Quaternion.Euler(0, theCam.yaw, 0);
-                transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .07f);
+                transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .05f);
             }
             if (Input.GetButton("Jump"))
             {

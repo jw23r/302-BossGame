@@ -92,6 +92,7 @@ namespace Webb
         }
         public Vector3 VectorToAttackTarget()
         {
+
             return attackTarget.position - transform.position;
         }
         public float distanceToAttackTarget()
@@ -138,7 +139,7 @@ namespace Webb
         
        public void MoveToTaregt(Transform bodyPart,Transform target, int speed)
         {
-          
+            if (attackTarget == null) return;
                 Vector3 targetDirection = attackTarget.position - transform.position;
 
                 // The step size is equal to speed times frame time.
