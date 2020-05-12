@@ -175,13 +175,14 @@ public class PlayerMovment : MonoBehaviour
             h = Input.GetAxis("Horizontal");
             v = Input.GetAxis("Vertical");
            input = new Vector3(h, 0.0f, v);
-
-            walkDir = input * moveSpeed;
+            input = transform.forward * v * moveSpeed;
+            input += transform.right * h * moveSpeed;
+           // walkDir = input * moveSpeed;
             input *= moveSpeed;
-            if (v != 0 && theCam != null)
+            if (v != 0 || h !=0 && theCam != null)
             {
                 Quaternion targetRot = Quaternion.Euler(0, theCam.yaw, 0);
-                transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .01f);
+                transform.rotation = AnimMath.Dampen(transform.rotation, targetRot, .07f);
             }
             if (Input.GetButton("Jump"))
             {
